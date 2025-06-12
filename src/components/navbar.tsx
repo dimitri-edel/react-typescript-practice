@@ -1,0 +1,16 @@
+// import React from 'react';
+import { Link } from 'react-router-dom';
+
+function NavBar() {
+  return (
+    <nav className="bg-gray-800 p-4 flex justify-between items-center">
+      <div className="text-white text-xl font-bold">MyApp</div>
+      <div className="flex gap-6">
+        <Link to="/" className="text-gray-300 hover:text-gray-400 transition-colors">Home</Link>
+        <Link to="/about" className="text-gray-300 hover:text-gray-400 transition-colors">About</Link>
+      </div>
+    </nav>
+  );
+}
+
+export default NavBar;
