@@ -1,15 +1,15 @@
 [
     {
-        "scope" : "hoee_page",
+        "scope" : "home_page",
         "id" : "greeting",
-        "text" : "Hello, {{username : string }}!",
+        "text" : "Hello, {username}!",
         "locale" : "en"
     },
     
     {
-        "scope" : "hoee_page",
+        "scope" : "home_page",
         "id" : "greeting",
-        "text" : "Hallo, {{username : string }}!",
+        "text" : "Hallo, {username}!",
         "locale" : "de"
     },
     {
@@ -95,5 +95,17 @@
         "id" : "confirmation_message",
         "text" : "Sind Sie sicher, dass Sie sich abmelden möchten?",
         "locale" : "de"
-    }    
+    },
+    {
+        "scope" : "test",
+        "id" : "test_message",
+        "text" : "This is a test message for {username} and {test_text}.",
+        "locale" : "en"
+    },
+    {
+        "scope" : "test",
+        "id" : "test_message",
+        "text" : "Dies ist eine Testnachricht für {username} und {test_text}.",
+        "locale" : "de"
+    }
 ]
