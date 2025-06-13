@@ -6,18 +6,12 @@ import About from './components/pages/about';
 import NavBar from './components/navbar';
 import Login from './components/pages/login';
 
-function App() {
-  const user: IUser = {
-    username: 'john_doe',
-    email: 'john_doe@some.com',
-    birthdate: new Date('1990-01-01'),
-    locale: 'en-US'
-  };
+function App() {  
   return (
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home user={user} />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
       </Routes>

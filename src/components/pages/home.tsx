@@ -1,8 +1,9 @@
-import type { IUser } from '../../types/user';
+import { useAuth } from '../AuthContext';
 
-function Home(props: { user: IUser }) {
-  const { user } = props;
-    if (!user) {
+function Home() {
+  const { username, isSignedIn } = useAuth();
+
+    if (!isSignedIn) {
         return (
         <div className="flex flex-col items-center justify-center min-h-screen pt-20">
             <h1 className="text-4xl font-bold mb-4">Welcome to Our Website</h1>
@@ -17,9 +18,7 @@ function Home(props: { user: IUser }) {
     <div className="flex flex-col items-center justify-center min-h-screen pt-20">
       <h1 className="text-4xl font-bold mb-4">Welcome to Our Website</h1>
       <p className="text-lg mb-8">This is the home page.</p>
-      <a href="/about" className="text-blue-500 hover:underline">
-        Go to About Page
-      </a>
+      <p className="text-gray-500">Signed in as: {username}</p>
     </div>
   );
 }
