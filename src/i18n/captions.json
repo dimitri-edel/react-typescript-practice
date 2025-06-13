@@ -1,0 +1,99 @@
+[
+    {
+        "scope" : "hoee_page",
+        "id" : "greeting",
+        "text" : "Hello, {{username : string }}!",
+        "locale" : "en"
+    },
+    
+    {
+        "scope" : "hoee_page",
+        "id" : "greeting",
+        "text" : "Hallo, {{username : string }}!",
+        "locale" : "de"
+    },
+    {
+        "scope" : "home_page",
+        "id" : "main_title",
+        "text" : "Home Page",
+        "locale" : "en"
+    },
+    {
+        "scope" : "home_page",
+        "id" : "main_title",
+        "text" : "Startseite",
+        "locale" : "de"
+    },
+    {
+        "scope" : "home_page",
+        "id" : "welcome_message",
+        "text" : "Welcome to the Home Page!",
+        "locale" : "en"
+    },
+    {
+        "scope" : "home_page",
+        "id" : "welcome_message",
+        "text" : "Willkommen auf der Startseite!",
+        "locale" : "de"
+    },
+    {
+        "scope" : "home_page",
+        "id" : "description",
+        "text" : "This is the main page of our application.",
+        "locale" : "en"
+    },
+    {
+        "scope" : "home_page",
+        "id" : "description",
+        "text" : "Dies ist die Hauptseite unserer Anwendung.",
+        "locale" : "de"
+    },
+    {
+        "scope" : "global",
+        "id" : "yes",
+        "text" : "Yes",
+        "locale" : "en"
+    },
+    {
+        "scope" : "global",
+        "id" : "yes",
+        "text" : "Ja",
+        "locale" : "de"
+    },
+    {
+        "scope" : "global",
+        "id" : "no",
+        "text" : "No",
+        "locale" : "en"
+    },
+    {
+        "scope" : "global",
+        "id" : "no",
+        "text" : "Nein",
+        "locale" : "de"
+    },
+    {
+        "scope" : "global",
+        "id" : "cancel",
+        "text" : "Cancel",
+        "locale" : "en"
+    },
+    {
+        "scope" : "global",
+        "id" : "cancel",
+        "text" : "Abbrechen",
+        "locale" : "de"
+    },
+    {
+        "scope" : "logout_page",
+        "id" : "confirmation_message",
+        "text" : "Are you sure you want to log out?",
+        "locale" : "en"
+    },
+    {
+        "scope" : "logout_page",
+        "id" : "confirmation_message",
+        "text" : "Sind Sie sicher, dass Sie sich abmelden möchten?",
+        "locale" : "de"
+    }    
+]
