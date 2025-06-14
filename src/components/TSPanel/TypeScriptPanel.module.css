@@ -1,0 +1,33 @@
+.panelBg {
+  background: #1e1e1e;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.code {
+  color: #d4d4d4;
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.keyword {
+  color: #569cd6;
+  font-weight: bold;
+}
+.string {
+  color: #ce9178;
+}
+.comment {
+  color: #6a9955;
+  font-style: italic;
+}
+.number {
+  color: #b5cea8;
+}
+.type {
+  color: #4ec9b0;
+}
+.functionName {
+  color: #dcdcaa;
+}
