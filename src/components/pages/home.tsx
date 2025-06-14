@@ -1,9 +1,10 @@
 import { useAuth } from '../AuthContext';
 import { getTranslation } from '../../i18n/i18n';
+import { useLocale } from '../LocaleContext';
 
 function Home() {
   const { username, isSignedIn } = useAuth();
-  const locale = 'en'; // This should be dynamically set based on user preference or browser settings
+  const locale = useLocale().locale;
   const main_title = getTranslation('home_page', 'main_title', locale);
   const greeting = getTranslation('home_page', 'greeting', locale, [{ username: username }]);
 
