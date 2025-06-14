@@ -16,7 +16,7 @@ function Login() {
         signIn(username);        
         
       // For now, just proceed
-      navigate('/about');
+      navigate('/');
     } else {
       setError('Username must be >= 4 chars and password at least 5 chars.');
     }

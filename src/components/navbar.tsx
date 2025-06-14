@@ -1,10 +1,30 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useLocale } from './LocaleContext';
+import { useState } from 'react';
+import ConfirmModal from './modals/ConfirmModal';
 
 function NavBar() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, signOut } = useAuth();
   const { locale, setLocale } = useLocale();
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogoutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
+
+  const handleConfirm = () => {
+    setShowModal(false);
+    signOut();
+    navigate('/');
+  };
+
+  const handleCancel = () => {
+    setShowModal(false);
+  };
+
   return (
     <nav className="bg-gray-800 p-4 flex justify-between items-center">
       <div className="text-white text-xl font-bold">MyApp</div>
@@ -12,7 +32,13 @@ function NavBar() {
         <Link to="/" className="text-gray-300 hover:text-gray-400 transition-colors">Home</Link>
         <Link to="/about" className="text-gray-300 hover:text-gray-400 transition-colors">About</Link>
         {isSignedIn ? (
-          <Link to="/logout" className="text-gray-300 hover:text-gray-400 transition-colors">Logout</Link>
+          <button
+            onClick={handleLogoutClick}
+            className="text-gray-300 hover:text-gray-400 transition-colors bg-transparent border-none cursor-pointer"
+            style={{ padding: 0 }}
+          >
+            Logout
+          </button>
         ) : (
           <Link to="/login" className="text-gray-300 hover:text-gray-400 transition-colors">Login</Link>
         )}
@@ -25,6 +51,14 @@ function NavBar() {
           <option value="de">Deutsch</option>
         </select>
       </div>
+      {showModal && (
+        <ConfirmModal
+          scope="logout_page"
+          id="confirmation_message"
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
+      )}
     </nav>
   );
 }
