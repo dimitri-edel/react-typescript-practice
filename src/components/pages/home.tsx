@@ -2,12 +2,16 @@ import { useAuth } from '../AuthContext';
 import { getTranslation } from '../../i18n/i18n';
 import { useLocale } from '../LocaleContext';
 import TypeScriptPanel from '../TSPanel/TypeScriptPanel';
+import ConfirmModal from '../modals/ConfirmModal';
+import { useState } from 'react';
 
 function Home() {
   const { username, isSignedIn } = useAuth();
   const locale = useLocale().locale;
   const main_title = getTranslation('home_page', 'main_title', locale);
   const greeting = getTranslation('home_page', 'greeting', locale, [{ username: username }]);
+  const [showModal, setShowModal] = useState(false);
+  const [result, setResult] = useState<string | null>(null);
 
   if (!isSignedIn) {
     return (
@@ -28,6 +32,26 @@ function Home() {
       <>
         {get_description_pragraphs(locale)}
         <TypeScriptPanel scope="home_page" id="typescript_source_code" />
+        <div className="flex items-center gap-4 mt-8">
+          <button className="bg-blue-600 text-white rounded px-4 py-2 hover:bg-blue-700" onClick={() => setShowModal(true)}>
+            Show Confirm Modal
+          </button>
+          <span className="text-lg">{result === 'confirmed' ? 'Confirmed' : result === 'discarded' ? 'Discarded' : ''}</span>
+        </div>
+        {showModal && (
+          <ConfirmModal
+            scope="logout_page"
+            id="confirmation_message"
+            onConfirm={() => {
+              setResult('confirmed');
+              setShowModal(false);
+            }}
+            onCancel={() => {
+              setResult('discarded');
+              setShowModal(false);
+            }}
+          />
+        )}
       </>
     </div>
   );
