@@ -1,12 +1,12 @@
 import { useAuth } from '../AuthContext';
-import { getCaption } from '../../i18n/i18n';
+import { getTranslation } from '../../i18n/i18n';
 
 function Home() {
   const { username, isSignedIn } = useAuth();
   const locale = 'en'; // This should be dynamically set based on user preference or browser settings
-  const main_title = getCaption('home_page', 'main_title', locale);
-  const greeting = getCaption('home_page', 'greeting', locale, [{ username: username }]);
-  const test_text = getCaption('test', 'test_message', locale, [{ username: username }, { test_text : "this is it."}]);
+  const main_title = getTranslation('home_page', 'main_title', locale);
+  const greeting = getTranslation('home_page', 'greeting', locale, [{ username: username }]);
+  const test_text = getTranslation('test', 'test_message', locale, [{ username: username }, { test_text : "this is it."}]);
 
     if (!isSignedIn) {
         return (
