@@ -1,111 +1,110 @@
 [
     {
-        "scope" : "home_page",
-        "id" : "greeting",
-        "text" : "Hello, {username}!",
-        "locale" : "en"
-    },
-    
-    {
-        "scope" : "home_page",
-        "id" : "greeting",
-        "text" : "Hallo, {username}!",
-        "locale" : "de"
+        "scope": "home_page",
+        "id": "greeting",
+        "text": "Hello, {username}!",
+        "locale": "en"
     },
     {
-        "scope" : "home_page",
-        "id" : "main_title",
-        "text" : "Home Page",
-        "locale" : "en"
+        "scope": "home_page",
+        "id": "greeting",
+        "text": "Hallo, {username}!",
+        "locale": "de"
     },
     {
-        "scope" : "home_page",
-        "id" : "main_title",
-        "text" : "Startseite",
-        "locale" : "de"
+        "scope": "home_page",
+        "id": "main_title",
+        "text": "React & TypeScript Frontend Template",
+        "locale": "en"
     },
     {
-        "scope" : "home_page",
-        "id" : "welcome_message",
-        "text" : "Welcome to the Home Page!",
-        "locale" : "en"
+        "scope": "home_page",
+        "id": "main_title",
+        "text": "React & TypeScript Frontend Vorlage",
+        "locale": "de"
     },
     {
-        "scope" : "home_page",
-        "id" : "welcome_message",
-        "text" : "Willkommen auf der Startseite!",
-        "locale" : "de"
+        "scope": "home_page",
+        "id": "welcome_message",
+        "text": "Welcome to the Home Page!",
+        "locale": "en"
     },
     {
-        "scope" : "home_page",
-        "id" : "description",
-        "text" : "This is the main page of our application.",
-        "locale" : "en"
+        "scope": "home_page",
+        "id": "welcome_message",
+        "text": "Willkommen auf der Startseite!",
+        "locale": "de"
+    },    
+    {
+        "scope": "home_page",
+        "id": "description",
+        "text": "React is a popular, open-source JavaScript library for building user interfaces, particularly single-page applications. Developed by Facebook, it allows developers to create reusable UI components, enabling efficient and modular development. React utilizes a virtual DOM to optimize updates, leading to improved performance. Its component-based architecture promotes a declarative programming style, making UIs easier to reason about and maintain. React's extensive ecosystem, strong community support, and flexibility make it a leading choice for modern web development.\n\nTypeScript significantly enhances React development by introducing static typing to JavaScript. This means you can define the types of props, state, and other variables, catching type-related errors during development rather than at runtime. This leads to fewer bugs, improved code readability, and better maintainability, especially in large and complex applications. TypeScript's robust tooling provides excellent autocompletion, refactoring capabilities, and inline documentation, boosting developer productivity and making collaboration easier. It acts as a powerful layer over JavaScript, providing the benefits of type safety without sacrificing React's flexibility.",
+        "locale": "en"
     },
     {
-        "scope" : "home_page",
-        "id" : "description",
-        "text" : "Dies ist die Hauptseite unserer Anwendung.",
-        "locale" : "de"
+        "scope": "home_page",
+        "id": "description",
+        "text": "React ist eine beliebte, quelloffene JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, insbesondere von Single-Page-Anwendungen. Von Facebook entwickelt, ermöglicht es Entwicklern, wiederverwendbare UI-Komponenten zu erstellen, was eine effiziente und modulare Entwicklung fördert. React verwendet ein virtuelles DOM, um Aktualisierungen zu optimieren, was zu einer verbesserten Leistung führt. Seine komponentenbasierten Architektur fördert einen deklarativen Programmierstil, der UIs leichter verständlich und wartbar macht. Das umfangreiche Ökosystem von React, die starke Community-Unterstützung und seine Flexibilität machen es zu einer führenden Wahl für die moderne Webentwicklung.\n\nTypeScript verbessert die React-Entwicklung erheblich, indem es statische Typisierung in JavaScript einführt. Das bedeutet, dass Sie die Typen von Props, State und anderen Variablen definieren können, wodurch typrelatierte Fehler bereits während der Entwicklung statt zur Laufzeit abgefangen werden. Dies führt zu weniger Fehlern, verbesserter Lesbarkeit des Codes und besserer Wartbarkeit, insbesondere in großen und komplexen Anwendungen. Die robusten Tools von TypeScript bieten hervorragende Autovervollständigung, Refactoring-Funktionen und Inline-Dokumentation, was die Produktivität der Entwickler steigert und die Zusammenarbeit erleichtert. Es fungiert als leistungsstarke Schicht über JavaScript und bietet die Vorteile der Typsicherheit, ohne die Flexibilität von React zu beeinträchtigen.",
+        "locale": "de"
     },
     {
-        "scope" : "global",
-        "id" : "yes",
-        "text" : "Yes",
-        "locale" : "en"
+        "scope": "global",
+        "id": "yes",
+        "text": "Yes",
+        "locale": "en"
     },
     {
-        "scope" : "global",
-        "id" : "yes",
-        "text" : "Ja",
-        "locale" : "de"
+        "scope": "global",
+        "id": "yes",
+        "text": "Ja",
+        "locale": "de"
     },
     {
-        "scope" : "global",
-        "id" : "no",
-        "text" : "No",
-        "locale" : "en"
+        "scope": "global",
+        "id": "no",
+        "text": "No",
+        "locale": "en"
     },
     {
-        "scope" : "global",
-        "id" : "no",
-        "text" : "Nein",
-        "locale" : "de"
+        "scope": "global",
+        "id": "no",
+        "text": "Nein",
+        "locale": "de"
     },
     {
-        "scope" : "global",
-        "id" : "cancel",
-        "text" : "Cancel",
-        "locale" : "en"
+        "scope": "global",
+        "id": "cancel",
+        "text": "Cancel",
+        "locale": "en"
     },
     {
-        "scope" : "global",
-        "id" : "cancel",
-        "text" : "Abbrechen",
-        "locale" : "de"
+        "scope": "global",
+        "id": "cancel",
+        "text": "Abbrechen",
+        "locale": "de"
     },
     {
-        "scope" : "logout_page",
-        "id" : "confirmation_message",
-        "text" : "Are you sure you want to log out?",
-        "locale" : "en"
+        "scope": "logout_page",
+        "id": "confirmation_message",
+        "text": "Are you sure you want to log out?",
+        "locale": "en"
     },
     {
-        "scope" : "logout_page",
-        "id" : "confirmation_message",
-        "text" : "Sind Sie sicher, dass Sie sich abmelden möchten?",
-        "locale" : "de"
+        "scope": "logout_page",
+        "id": "confirmation_message",
+        "text": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+        "locale": "de"
     },
     {
-        "scope" : "test",
-        "id" : "test_message",
-        "text" : "This is a test message for {username} and {test_text}.",
-        "locale" : "en"
+        "scope": "test",
+        "id": "test_message",
+        "text": "This is a test message for {username} and {test_text}.",
+        "locale": "en"
     },
     {
-        "scope" : "test",
-        "id" : "test_message",
-        "text" : "Dies ist eine Testnachricht für {username} und {test_text}.",
-        "locale" : "de"
+        "scope": "test",
+        "id": "test_message",
+        "text": "Dies ist eine Testnachricht für {username} und {test_text}.",
+        "locale": "de"
     }
 ]

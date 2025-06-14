@@ -2,6 +2,8 @@
 
 * Cover all the necessary Typescript features that are necessary for writing React applications
 * Create a i18n feature for the application
+* Explore React features
+
 
 # SETTING UP THE REACT APP
 
