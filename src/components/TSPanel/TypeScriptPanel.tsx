@@ -9,18 +9,20 @@ interface TypeScriptPanelProps {
 
 // Simple TypeScript syntax highlighter using regex
 function highlightTypeScript(code: string): string {
-  // Keywords
-  code = code.replace(/\b(?:const|let|var|function|return|if|else|for|while|import|from|export|type|interface|extends|implements|class|public|private|protected|static|readonly|new|as|any|void|number|string|boolean|undefined|null|true|false|this|super|constructor)\b/g, '<span class="' + styles.keyword + '">$&</span>');
+  // Escape HTML special characters first
+  code = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // Keywords (avoid double-highlighting by using a callback and not replacing inside tags)
+  code = code.replace(/\b(?:default|const|let|var|function|return|if|else|for|while|import|from|export|type|interface|extends|implements|class|public|private|protected|static|readonly|new|as|any|void|number|string|boolean|undefined|null|true|false|this|super|constructor)\b/g, (match) => `<span class=${styles.keyword}>${match}</span>`);
   // Strings
-  code = code.replace(/(['"`])(?:(?=(\\?))\2.)*?\1/g, '<span class="' + styles.string + '">$&</span>');
+  code = code.replace(/(['"`])(?:(?=(\\?))\2.)*?\1/g, (match) => `<span class=${styles.string}>${match}</span>`);
   // Comments
-  code = code.replace(/(\/\/.*|\/\*[\s\S]*?\*\/)/g, '<span class="' + styles.comment + '">$&</span>');
+  code = code.replace(/(\/\/.*|\/\*[\s\S]*?\*\/)/g, (match) => `<span class=${styles.comment}>${match}</span>`);
   // Numbers
-  code = code.replace(/\b\d+(?:\.\d+)?\b/g, '<span class="' + styles.number + '">$&</span>');
+  code = code.replace(/\b\d+(?:\.\d+)?\b/g, (match) => `<span class=${styles.number}>${match}</span>`);
   // Types (after colon or as)
-  code = code.replace(/(:|as)\s*([A-Z][A-Za-z0-9_]*)/g, '$1 <span class="' + styles.type + '">$2</span>');
+  code = code.replace(/(:|as)\s*([A-Z][A-Za-z0-9_]*)/g, (m, p1, p2) => `${p1} <span class=${styles.type}>${p2}</span>`);
   // Function names
-  code = code.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g, '<span class="' + styles.functionName + '">$1</span>');
+  code = code.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g, (match) => `<span class=${styles.functionName}>${match}</span>`);
   return code;
 }
 

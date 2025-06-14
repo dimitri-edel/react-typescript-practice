@@ -34,7 +34,7 @@
         "id": "welcome_message",
         "text": "Willkommen auf der Startseite!",
         "locale": "de"
-    },    
+    },
     {
         "scope": "home_page",
         "id": "description",
@@ -45,6 +45,18 @@
         "scope": "home_page",
         "id": "description",
         "text": "React ist eine beliebte, quelloffene JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, insbesondere von Single-Page-Anwendungen. Von Facebook entwickelt, ermöglicht es Entwicklern, wiederverwendbare UI-Komponenten zu erstellen, was eine effiziente und modulare Entwicklung fördert. React verwendet ein virtuelles DOM, um Aktualisierungen zu optimieren, was zu einer verbesserten Leistung führt. Seine komponentenbasierten Architektur fördert einen deklarativen Programmierstil, der UIs leichter verständlich und wartbar macht. Das umfangreiche Ökosystem von React, die starke Community-Unterstützung und seine Flexibilität machen es zu einer führenden Wahl für die moderne Webentwicklung.\n\nTypeScript verbessert die React-Entwicklung erheblich, indem es statische Typisierung in JavaScript einführt. Das bedeutet, dass Sie die Typen von Props, State und anderen Variablen definieren können, wodurch typrelatierte Fehler bereits während der Entwicklung statt zur Laufzeit abgefangen werden. Dies führt zu weniger Fehlern, verbesserter Lesbarkeit des Codes und besserer Wartbarkeit, insbesondere in großen und komplexen Anwendungen. Die robusten Tools von TypeScript bieten hervorragende Autovervollständigung, Refactoring-Funktionen und Inline-Dokumentation, was die Produktivität der Entwickler steigert und die Zusammenarbeit erleichtert. Es fungiert als leistungsstarke Schicht über JavaScript und bietet die Vorteile der Typsicherheit, ohne die Flexibilität von React zu beeinträchtigen.",
+        "locale": "de"
+    },
+    {
+        "scope": "home_page",
+        "id": "typescript_source_code",
+        "text": "export default function TypeScriptPanel({ scope, id }: TypeScriptPanelProps) {\n  const { locale } = useLocale();\n  const code = getTranslation(scope, id, locale);\n  return (\n    <div className={styles.panelBg}>\n      <pre className={styles.code}>\n        <code dangerouslySetInnerHTML={{ __html: highlightTypeScript(code) }} />\n      </pre>\n    </div>\n  );\n}",
+        "locale": "en"
+    },
+    {
+        "scope": "home_page",
+        "id": "typescript_source_code",
+        "text": "export default function TypeScriptPanel({ scope, id }: TypeScriptPanelProps) {\n  const { locale } = useLocale();\n  const code = getTranslation(scope, id, locale);\n  return (\n    <div className={styles.panelBg}>\n      <pre className={styles.code}>\n        <code dangerouslySetInnerHTML={{ __html: highlightTypeScript(code) }} />\n      </pre>\n    </div>\n  );\n}",
         "locale": "de"
     },
     {
