@@ -4,7 +4,8 @@
   border-radius: 0.5rem;
   overflow-x: auto;
   margin: 1rem 0;
-  width: 100%;
+  width: 80%;
+  text-align: left;
 }
 .code {
   color: #d4d4d4;

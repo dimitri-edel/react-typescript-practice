@@ -1,0 +1,48 @@
+/* Panel background and code font */
+.panelBg {
+    background: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    width: 80%;
+    text-align: left;
+}
+
+.code {
+    color: #d4d4d4;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Syntax highlighting */
+.selector {
+    color: #e06c75;
+    font-weight: bold;
+}
+
+.property {
+    color: #61afef;
+}
+
+.number {
+    color: #b5cea8;
+}
+
+.string {
+    color: #ce9178;
+}
+
+.comment {
+    color: #6a9955;
+    font-style: italic;
+}
+
+.color {
+    color: #d19a66;
+}
+
+.brace {
+    color: #c678dd;
+}

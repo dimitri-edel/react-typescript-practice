@@ -2,8 +2,7 @@ import { useAuth } from '../AuthContext';
 import { getTranslation } from '../../i18n/i18n';
 import { useLocale } from '../LocaleContext';
 import TypeScriptPanel from '../TSPanel/TypeScriptPanel';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import CSSPanel from '../CSSPanel/CSSPanel';
 
 function Home() {
   const { username, isSignedIn } = useAuth();  
@@ -29,7 +28,8 @@ function Home() {
       <p className="text-gray-500">Signed in as: {username}</p>
       <>
         {get_description_pragraphs(locale)}
-        <TypeScriptPanel scope="home_page" id="typescript_source_code" />        
+        <TypeScriptPanel scope="home_page" id="typescript_source_code" /> 
+        <CSSPanel scope="home_page" id="css_source_code" />       
       </>
     </div>
   );
