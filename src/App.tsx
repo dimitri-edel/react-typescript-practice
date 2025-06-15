@@ -5,6 +5,7 @@ import About from './components/pages/about';
 import NavBar from './components/navbar';
 import Login from './components/pages/login';
 import Logout from './components/pages/logout';
+import I18nPage from './components/pages/i18nPage'
 
 function App() {  
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="i18n-page" element={<I18nPage />} />
       </Routes>
     </Router>
   );
