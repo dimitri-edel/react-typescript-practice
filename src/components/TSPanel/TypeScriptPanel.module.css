@@ -13,7 +13,7 @@
   line-height: 1.6;
 }
 .keyword {
-  color: #569cd6;
+  color: #d582e4;
   font-weight: bold;
 }
 .string {
@@ -31,4 +31,14 @@
 }
 .functionName {
   color: #dcdcaa;
+}
+.htmlTag {
+  color: #6c9ce0;
+  font-weight: bold;
+}
+.htmlAttr {
+  color: #94b5e4;
+}
+.htmlAttrValue {
+  color: #98c379;
 }

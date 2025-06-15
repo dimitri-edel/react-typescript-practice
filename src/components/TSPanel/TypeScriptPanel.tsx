@@ -23,6 +23,19 @@ function highlightTypeScript(code: string): string {
   code = code.replace(/(:|as)\s*([A-Z][A-Za-z0-9_]*)/g, (m, p1, p2) => `${p1} <span class=${styles.type}>${p2}</span>`);
   // Function names
   code = code.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g, (match) => `<span class=${styles.functionName}>${match}</span>`);
+  // HTML tags
+  code = code.replace(/(&lt;\/?)([a-zA-Z0-9\-]+)(.*?)(\/?&gt;)/g, (_m, p1, p2, p3, p4) => {
+    // Highlight tag name
+    let tag = `${p1}<span class=${styles.htmlTag}>${p2}</span>`;
+    // Highlight attributes
+    if (p3) {
+      tag += p3.replace(/([a-zA-Z_:][a-zA-Z0-9_\-:.]*)(=)(["'])(.*?)(["'])/g, (_am: string, attr: string, eq: string, q1: string, val: string, q2: string) => {
+        return `<span class=${styles.htmlAttr}>${attr}</span>${eq}<span class=${styles.htmlAttrValue}>${q1}${val}${q2}</span>`;
+      });
+    }
+    tag += p4;
+    return tag;
+  });
   return code;
 }
 
