@@ -6,6 +6,7 @@ import NavBar from './components/navbar';
 import Login from './components/pages/login';
 import Logout from './components/pages/logout';
 import I18nPage from './components/pages/i18nPage'
+import TypeScriptPage from './components/pages/typescriptPage';
 
 function App() {  
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="i18n-page" element={<I18nPage />} />
+        <Route path="/i18n-page" element={<I18nPage />} />
+        <Route path="/typescript-page" element={<TypeScriptPage />} />
+        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );

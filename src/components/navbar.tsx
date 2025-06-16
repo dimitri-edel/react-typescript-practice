@@ -32,6 +32,7 @@ function NavBar() {
         <Link to="/" className="text-gray-300 hover:text-gray-400 transition-colors">Home</Link>
         <Link to="/about" className="text-gray-300 hover:text-gray-400 transition-colors">About</Link>
         <Link to="/i18n-page" className="text-gray-300 hover:text-gray-400 transition-colors">i18n</Link>
+        <Link to="/typescript-page" className="text-gray-300 hover:text-gray-400 transition-colors">TypeScript</Link>
         {isSignedIn ? (
           <button
             onClick={handleLogoutClick}

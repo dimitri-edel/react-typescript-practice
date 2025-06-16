@@ -9,9 +9,9 @@ export default function TypeScriptPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen pt-20">
-      <h1 className="text-4xl font-bold mb-4">{title}</h1>
+      <h1 className="text-4xl font-bold mb-4">{title}</h1>      
       <p className="text-lg mb-8">{description}</p>
-      <TypeScriptPanel scope="typescript_page" id="typescript_source_code" />
+      {/* <TypeScriptPanel scope="typescript_page" id="typescript_source_code" /> */}
     </div>
   );
 }
