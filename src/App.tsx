@@ -6,7 +6,7 @@ import NavBar from './components/navbar';
 import Login from './components/pages/login';
 import Logout from './components/pages/logout';
 import I18nPage from './components/pages/i18nPage'
-import TypeScriptPage from './components/pages/typescriptPage';
+import TypeScriptPage from './components/pages/typescript_pages/typescriptPage';
 
 function App() {  
   return (
