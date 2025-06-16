@@ -11,14 +11,15 @@ export default function TypeScriptPage() {
     const typesafety_description = getTranslation('typescript_page', 'typesafety_description', locale);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen pt-20">
+        <div className="flex min-h-screen pt-20">
             <TypeScriptSidebar />
-            <h1 className="text-4xl font-bold mb-4">{title}</h1>
-            <p className="text-lg mb-8">{description}</p>
-            <h2 className="text-2xl font-semibold mb-4">{typesafety_title}</h2>
-            <p className="text-lg mb-8">{typesafety_description}</p>
-            <TypeScriptPanel scope="typescript_page" id="typesafety_source_code" />
+            <div className="flex flex-col flex-1 items-center">
+                <h1 className="text-4xl font-bold mb-4">{title}</h1>
+                <p className="text-lg mb-8">{description}</p>
+                <h2 className="text-2xl font-semibold mb-4">{typesafety_title}</h2>
+                <p className="text-lg mb-8">{typesafety_description}</p>
+                <TypeScriptPanel scope="typescript_page" id="typesafety_source_code" />
+            </div>
         </div>
-
     );
 }
