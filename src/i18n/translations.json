@@ -108,6 +108,30 @@
         "locale": "de"
     },
     {
+        "scope" : "typescript_page",
+        "id": "typescript_title",
+        "text": "Useful TypeScript Features",
+        "locale": "en"
+    },
+    {
+        "scope" : "typescript_page",
+        "id": "typescript_title",
+        "text": "Nützliche TypeScript-Merkmale",
+        "locale": "de"
+    },
+    {
+        "scope": "typescript_page",
+        "id": "typescript_description",
+        "text": "TypeScript is a powerful superset of JavaScript that adds static typing, interfaces, and advanced tooling to enhance development efficiency and code quality.",
+        "locale": "en"
+    },
+    {
+        "scope": "typescript_page",
+        "id": "typescript_description",
+        "text": "TypeScript ist ein leistungsstarkes Superset von JavaScript, das statische Typisierung, Schnittstellen und erweiterte Tools hinzufügt, um die Entwicklungseffizienz und Codequalität zu verbessern.",
+        "locale": "de"
+    },
+    {
         "scope": "global",
         "id": "loading",
         "text": "Loading...",
