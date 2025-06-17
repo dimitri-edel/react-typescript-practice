@@ -1,14 +1,14 @@
 import { getTranslation } from '../../../i18n/i18n';
-import { useLocale } from '../../LocaleContext';
-import TypeScriptPanel from '../../TSPanel/TypeScriptPanel';
+import { useLocale } from '/src/components/LocaleContext';
+import TypeScriptPanel from '/src/components/TSPanel/TypeScriptPanel';
 import TypeScriptSidebar from "./sidebar"
 
 export default function TypeScriptPage() {
     const { locale } = useLocale();
-    const title = getTranslation('typescript_page', 'typescript_title', locale);
-    const description = getTranslation('typescript_page', 'typescript_description', locale);
-    const typesafety_title = getTranslation('typescript_page', 'typesafety_title', locale);
-    const typesafety_description = getTranslation('typescript_page', 'typesafety_description', locale);
+    const title = getTranslation('main', 'main_title', locale,  undefined, "typescript");
+    const description = getTranslation('main', 'main_description', locale,  undefined, "typescript");
+    const typesafety_title = getTranslation('main', 'typesafety_title', locale,  undefined, "typescript");
+    const typesafety_description = getTranslation('main', 'typesafety_description', locale,  undefined, "typescript");
 
     return (
         <div className="flex min-h-screen pt-20">
