@@ -1,5 +1,5 @@
-// Load translations.json file and export it as a module
-import translations from './translations.json';
+import defaultTranslations from './translations.json';
+import typescriptTranslations from '../features/typescript/i18n/translations.json';
 import type { ITranslation } from '../types/i18n';
 /*
     * This function retrieves a translation based on the provided scope, id, and locale.
@@ -12,7 +12,21 @@ import type { ITranslation } from '../types/i18n';
     * @returns {string} - The translation text with parameters replaced, or an empty string if not found.
     */
 
-export function getTranslation(scope: string, id: string, locale: string, paramList?: Array<Record<string, string>>): string {
+export function getTranslation(scope: string, id: string, locale: string, paramList?: Array<Record<string, string>>, feature?: string): string {
+    let translations: ITranslation[];
+    // if feature is not defined, imports translations from the default translations.json file
+    if (!feature) {
+        translations = defaultTranslations;
+    } else {
+        switch (feature) {
+            case 'typescript':
+                translations = typescriptTranslations;
+                break;
+            default:
+                translations = defaultTranslations;
+                break;
+        }
+    }
     const translation = translations.find((c: ITranslation) => c.scope === scope && c.id === id && c.locale === locale);
     if (!translation) return '';
     let text = translation.text;
