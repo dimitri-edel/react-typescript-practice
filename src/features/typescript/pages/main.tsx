@@ -21,8 +21,7 @@ export default function TypeScriptPage() {
                 onGenericsClick={() => setSelected('generics')}
             />
             <div className="flex flex-col flex-1 items-center">
-                {content}
-                <TypeScriptPanel scope="typescript_page" id="typescript_source_code" />
+                {content}                
             </div>
         </div>
     )
