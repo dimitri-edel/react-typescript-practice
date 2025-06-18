@@ -1,5 +1,4 @@
 import TypeScriptSidebar from "../components/sidebar"
-import {TypeScriptPanel} from '../../../components/TSPanel/TypeScriptPanel';
 import {Index} from "./index";
 import { useState } from 'react';
 import Generics from './generics';
@@ -15,10 +14,11 @@ export default function TypeScriptPage() {
     }
     
     return (
-        <div className="flex min-h-screen pt-20">
+        <div className="flex min-h-screen mt-[10px]">
             <TypeScriptSidebar
                 onIndexClick={() => setSelected('index')}
                 onGenericsClick={() => setSelected('generics')}
+                selected={selected}
             />
             <div className="flex flex-col flex-1 items-center">
                 {content}                
