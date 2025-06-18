@@ -1,6 +1,6 @@
 import { getTranslation } from '../../i18n/i18n';
 import { useLocale } from '../LocaleContext';
-import TypeScriptPanel from '../TSPanel/TypeScriptPanel';
+import {TypeScriptPanel} from '../TSPanel/TypeScriptPanel';
 
 export default function I18nPage() {
   const { locale } = useLocale();

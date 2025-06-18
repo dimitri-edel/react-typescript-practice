@@ -1,25 +1,33 @@
-import { getTranslation } from '../../../i18n/i18n';
-import { useLocale } from '/src/components/LocaleContext';
-import TypeScriptPanel from '/src/components/TSPanel/TypeScriptPanel';
 import TypeScriptSidebar from "../components/sidebar"
+import { getTranslation } from '../../../i18n/i18n';
+import { useLocale } from '../../../components/LocaleContext';
+import {TypeScriptPanel} from '../../../components/TSPanel/TypeScriptPanel';
+import {Index} from "./index";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import Generics from './generics';
 
 export default function TypeScriptPage() {
     const { locale } = useLocale();
-    const title = getTranslation('main', 'main_title', locale,  undefined, "typescript");
-    const description = getTranslation('main', 'main_description', locale,  undefined, "typescript");
-    const typesafety_title = getTranslation('main', 'typesafety_title', locale,  undefined, "typescript");
-    const typesafety_description = getTranslation('main', 'typesafety_description', locale,  undefined, "typescript");
-
+    const [selected, setSelected] = useState<'index' | 'generics'>('index');
+    
+    let content;
+    if (selected === 'index') {
+        content = <Index />;
+    } else if (selected === 'generics') {
+        content = <Generics />;
+    }
+    
     return (
         <div className="flex min-h-screen pt-20">
-            <TypeScriptSidebar />
+            <TypeScriptSidebar
+                onIndexClick={() => setSelected('index')}
+                onGenericsClick={() => setSelected('generics')}
+            />
             <div className="flex flex-col flex-1 items-center">
-                <h1 className="text-4xl font-bold mb-4">{title}</h1>
-                <p className="text-lg mb-8">{description}</p>
-                <h2 className="text-2xl font-semibold mb-4">{typesafety_title}</h2>
-                <p className="text-lg mb-8">{typesafety_description}</p>
-                <TypeScriptPanel scope="typescript_page" id="typesafety_source_code" />
+                {content}
+                <TypeScriptPanel scope="typescript_page" id="typescript_source_code" />
             </div>
         </div>
-    );
+    )
 }

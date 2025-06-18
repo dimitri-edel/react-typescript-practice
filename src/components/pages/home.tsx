@@ -1,7 +1,7 @@
 import { useAuth } from '../AuthContext';
 import { getTranslation } from '../../i18n/i18n';
 import { useLocale } from '../LocaleContext';
-import TypeScriptPanel from '../TSPanel/TypeScriptPanel';
+import {TypeScriptPanel} from '../TSPanel/TypeScriptPanel';
 import CSSPanel from '../CSSPanel/CSSPanel';
 
 function Home() {

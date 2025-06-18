@@ -52,7 +52,7 @@ function highlightTypeScript(code: string): string {
   return code;
 }
 
-export default function TypeScriptPanel({ scope, id }: TypeScriptPanelProps) {
+export function TypeScriptPanel({ scope, id }: TypeScriptPanelProps) {
   const { locale } = useLocale();
   const code = getTranslation(scope, id, locale);
   return (
