@@ -11,7 +11,7 @@ export default function Generics() {
 
     return (
         <div className="flex flex-col flex-1 items-center">
-            <h1 className="text-4xl font-bold mb-4">{title}</h1>
+            <h1 className="text-4xl font-bold mb-4">{title}</h1>            
             <p className="text-lg mb-8">{intro_paragraph_1}</p>
             <p className="text-lg mb-8">{intro_paragraph_2}</p>
             <h2 className="text-2xl font-semibold mb-4">{section_heading_1}</h2>

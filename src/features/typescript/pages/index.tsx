@@ -11,7 +11,7 @@ export function Index() {
     const typesafety_description = getTranslation('main', 'typesafety_description', locale,  undefined, "typescript");
 
     return (
-        <div className="flex min-h-screen pt-20">
+        <div className="flex flex-col flex-1 items-center">
             <div className="flex flex-col flex-1 items-center">
                 <h1 className="text-4xl font-bold mb-4">{title}</h1>
                 <p className="text-lg mb-8">{description}</p>
