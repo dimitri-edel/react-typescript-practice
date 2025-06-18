@@ -1,7 +1,7 @@
 import { getTranslation } from '../../../i18n/i18n';
 import { useLocale } from '/src/components/LocaleContext';
 import TypeScriptPanel from '/src/components/TSPanel/TypeScriptPanel';
-import TypeScriptSidebar from "./sidebar"
+import TypeScriptSidebar from "../components/sidebar"
 
 export default function TypeScriptPage() {
     const { locale } = useLocale();
