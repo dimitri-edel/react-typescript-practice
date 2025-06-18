@@ -17,7 +17,7 @@ export function Index() {
                 <p className="text-lg mb-8">{description}</p>
                 <h2 className="text-2xl font-semibold mb-4">{typesafety_title}</h2>
                 <p className="text-lg mb-8">{typesafety_description}</p>
-                <TypeScriptPanel scope="typescript_page" id="typesafety_source_code" />
+                <TypeScriptPanel scope="main" id="typesafety_source_code" feature="typescript" />                
             </div>
         </div>
     );

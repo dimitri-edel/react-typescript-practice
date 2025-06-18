@@ -94,5 +94,65 @@
         "id": "interfaces_description",
         "text": "TypeScript ermöglicht es Ihnen, benutzerdefinierte Typen und Schnittstellen zu definieren, was die Arbeit mit komplexen Datenstrukturen erleichtert und die Typensicherheit in Ihrer Anwendung gewährleistet.",
         "locale": "de"
+    },
+    {
+        "scope": "generics",
+        "id": "title",
+        "text": "Generics in TypeScript: A Quick Tutorial",
+        "locale": "en"
+    },
+    {
+        "scope": "generics",
+        "id": "title",
+        "text": "Generics in TypeScript: Ein schnelles Tutorial",
+        "locale": "de"
+    },
+    {
+        "scope": "generics",
+        "id": "intro_paragraph_1",
+        "text": "Generics are a powerful feature in TypeScript (and other languages like Java or C#) that allows you to write reusable components that can work with a variety of types, rather than being tied to one specific type. They enable you to create functions, classes, and interfaces that operate on a type passed in as an argument, making your code more flexible and type-safe.",
+        "locale": "en"
+    },
+    {
+        "scope": "generics",
+        "id": "intro_paragraph_1",
+        "text": "Generics sind ein mächtiges Feature in TypeScript (und anderen Sprachen wie Java oder C#), das es Ihnen ermöglicht, wiederverwendbare Komponenten zu schreiben, die mit einer Vielzahl von Typen arbeiten können, anstatt an einen spezifischen Typ gebunden zu sein. Sie ermöglichen es Ihnen, Funktionen, Klassen und Schnittstellen zu erstellen, die auf einem als Argument übergebenen Typ operieren, was Ihren Code flexibler und typsicherer macht.",
+        "locale": "de"
+    },
+    {
+        "scope": "generics",
+        "id": "intro_paragraph_2",
+        "text": "Think of generics as \"type variables\" that you can define and use. They allow you to capture the type of the argument so that you can use it to determine the type of the return value, or the types of properties within a class. This maintains type integrity while still offering flexibility.",
+        "locale": "en"
+    },
+    {
+        "scope": "generics",
+        "id": "intro_paragraph_2",
+        "text": "Stellen Sie sich Generics als „Typvariablen“ vor, die Sie definieren und verwenden können. Sie ermöglichen es Ihnen, den Typ des Arguments zu erfassen, sodass Sie ihn verwenden können, um den Typ des Rückgabewerts oder die Typen von Eigenschaften innerhalb einer Klasse zu bestimmen. Dies wahrt die Typintegrität und bietet dennoch Flexibilität.",
+        "locale": "de"
+    },
+    {
+        "scope": "generics",
+        "id": "section_heading_1",
+        "text": "Understanding Generics with Examples",
+        "locale": "en"
+    },
+    {
+        "scope": "generics",
+        "id": "section_heading_1",
+        "text": "Generics verstehen mit Beispielen",
+        "locale": "de"
+    },
+    {
+        "scope": "generics",
+        "id": "code_example",
+        "text": "// --- 1. Basic Generic Function ---\n// Problem: A function that returns whatever it receives.\n// Without generics, you might use 'any', losing type information:\nfunction identityAny(arg: any): any {\n  return arg;\n}\nlet outputAny = identityAny(\"myString\"); // outputAny is 'any' - no type safety\n\n// With generics, we capture the type of the argument.\n// <T> declares a type variable 'T'.\n// arg: T means the argument 'arg' will be of type T.\n// : T means the function will return a value of type T.\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\n// When you call it, TypeScript infers the type 'T'.\nlet outputString = identity(\"myString\"); // outputString is inferred as 'string'\nlet outputNumber = identity(123);      // outputNumber is inferred as 'number'\n\n// You can also explicitly specify the type:\nlet outputBoolean = identity<boolean>(true); // outputBoolean is 'boolean'\n\n\n// --- 2. Generic Functions with Multiple Type Variables ---\n// You can use multiple type variables if needed.\nfunction pair<T, U>(arg1: T, arg2: U): [T, U] {\n  return [arg1, arg2];\n}\nlet myPair = pair(\"hello\", 42); // myPair is inferred as [string, number]\n\n\n// --- 3. Generic Interfaces ---\n// Interfaces can also be generic, making them reusable for different data types.\ninterface Box<T> {\n  value: T;\n}\n\nlet stringBox: Box<string> = { value: \"TypeScript rocks!\" };\nlet numberBox: Box<number> = { value: 123 };\n\n\n// --- 4. Generic Classes ---\n// Classes can be generic too, allowing instances to work with specific types.\nclass DataStore<T> {\n  private data: T[] = [];\n\n  add(item: T): void {\n    this.data.push(item);\n  }\n\n  get(index: number): T | undefined {\n    return this.data[index];\n  }\n}\n\nlet stringDataStore = new DataStore<string>();\nstringDataStore.add(\"Apple\");\nstringDataStore.add(\"Banana\");\n// stringDataStore.add(123); // Error: Argument of type 'number' is not assignable to parameter of type 'string'.\n\nlet numberDataStore = new DataStore<number>();\nnumberDataStore.add(10);\nnumberDataStore.add(20);\n\n\n// --- 5. Generic Constraints ---\n// Sometimes you want generics to work with *any* type, but only if that type has certain properties.\n// 'extends' keyword is used to add constraints.\ninterface Lengthwise {\n  length: number;\n}\n\n// This generic function will only accept arguments that have a 'length' property.\nfunction loggingIdentity<T extends Lengthwise>(arg: T): T {\n  console.log(arg.length); // Now we know 'arg' definitely has a .length property\n  return arg;\n}\n\n// This works because string has a length property\nloggingIdentity(\"hello\");\n// This works because arrays have a length property\nloggingIdentity([1, 2, 3]);\n// This works because the object has a length property\nloggingIdentity({ length: 10, value: \"test\" });\n\n// loggingIdentity(5); // Error: Argument of type 'number' is not assignable to parameter of type 'Lengthwise'.\n// (numbers do not have a 'length' property)\n\n// --- 6. Using Type Parameters in Generic Constraints ---\n// You can constrain one type to be a property of another.\nfunction getProperty<T, K extends keyof T>(obj: T, key: K) {\n  return obj[key];\n}\n\nlet user = { name: \"Alice\", age: 30 };\nlet userName = getProperty(user, \"name\"); // userName is 'string'\nlet userAge = getProperty(user, \"age\");   // userAge is 'number'\n\n// let invalidKey = getProperty(user, \"address\"); // Error: Argument of type '\"address\"' is not assignable to parameter of type '\"name\" | \"age\"'.\n",
+        "locale": "en"
+    },
+    {
+        "scope": "generics",
+        "id": "code_example",
+        "text": "// --- 1. Grundlegende generische Funktion ---\n// Problem: Eine Funktion, die alles zurückgibt, was sie empfängt.\n// Ohne Generics würde man 'any' verwenden und Typinformationen verlieren:\nfunction identityAny(arg: any): any {\n  return arg;\n}\nlet outputAny = identityAny(\"meinString\"); // outputAny ist 'any' - keine Typsicherheit\n\n// Mit Generics erfassen wir den Typ des Arguments.\n// <T> deklariert eine Typvariable 'T'.\n// arg: T bedeutet, das Argument 'arg' ist vom Typ T.\n// : T bedeutet, die Funktion gibt einen Wert vom Typ T zurück.\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\n// Beim Aufruf leitet TypeScript den Typ 'T' ab.\nlet outputString = identity(\"meinString\"); // outputString wird als 'string' abgeleitet\nlet outputNumber = identity(123);      // outputNumber wird als 'number' abgeleitet\n\n// Sie können den Typ auch explizit angeben:\nlet outputBoolean = identity<boolean>(true); // outputBoolean ist 'boolean'\n\n\n// --- 2. Generische Funktionen mit mehreren Typvariablen ---\n// Bei Bedarf können Sie mehrere Typvariablen verwenden.\nfunction pair<T, U>(arg1: T, arg2: U): [T, U] {\n  return [arg1, arg2];\n}\nlet myPair = pair(\"hallo\", 42); // myPair wird als [string, number] abgeleitet\n\n\n// --- 3. Generische Interfaces ---\n// Interfaces können auch generisch sein, wodurch sie für verschiedene Datentypen wiederverwendbar werden.\ninterface Box<T> {\n  value: T;\n}\n\nlet stringBox: Box<string> = { value: \"TypeScript rockt!\" };\nlet numberBox: Box<number> = { value: 123 };\n\n\n// --- 4. Generische Klassen ---\n// Klassen können ebenfalls generisch sein, sodass Instanzen mit spezifischen Typen arbeiten können.\nclass DataStore<T> {\n  private data: T[] = [];\n\n  add(item: T): void {\n    this.data.push(item);\n  }\n\n  get(index: number): T | undefined {\n    return this.data[index];\n  }\n}\n\nlet stringDataStore = new DataStore<string>();\nstringDataStore.add(\"Apfel\");\nstringDataStore.add(\"Banane\");\n// stringDataStore.add(123); // Fehler: Argument vom Typ 'number' ist nicht zuweisbar zu Parameter vom Typ 'string'.\n\nlet numberDataStore = new DataStore<number>();\nnumberDataStore.add(10);\nnumberDataStore.add(20);\n\n\n// --- 5. Generische Constraints (Einschränkungen) ---\n// Manchmal sollen Generics mit *jedem* Typ arbeiten, aber nur wenn dieser Typ bestimmte Eigenschaften hat.\n// Das Schlüsselwort 'extends' wird verwendet, um Constraints hinzuzufügen.\ninterface Lengthwise {\n  length: number;\n}\n\n// Diese generische Funktion akzeptiert nur Argumente, die eine 'length'-Eigenschaft haben.\nfunction loggingIdentity<T extends Lengthwise>(arg: T): T {\n  console.log(arg.length); // Jetzt wissen wir, dass 'arg' definitiv eine .length-Eigenschaft hat\n  return arg;\n}\n\n// Das funktioniert, weil 'string' eine length-Eigenschaft hat\nloggingIdentity(\"hallo\");\n// Das funktioniert, weil Arrays eine length-Eigenschaft haben\nloggingIdentity([1, 2, 3]);\n// Das funktioniert, weil das Objekt eine length-Eigenschaft hat\nloggingIdentity({ length: 10, value: \"test\" });\n\n// loggingIdentity(5); // Fehler: Argument vom Typ 'number' ist nicht zuweisbar zu Parameter vom Typ 'Lengthwise'.\n// (Zahlen haben keine 'length'-Eigenschaft)\n\n// --- 6. Verwendung von Typparametern in generischen Constraints ---\n// Sie können einen Typ so einschränken, dass er eine Eigenschaft eines anderen Typs ist.\nfunction getProperty<T, K extends keyof T>(obj: T, key: K) {\n  return obj[key];\n}\n\nlet user = { name: \"Alice\", age: 30 };\nlet userName = getProperty(user, \"name\"); // userName ist 'string'\nlet userAge = getProperty(user, \"age\");   // userAge ist 'number'\n\n// let invalidKey = getProperty(user, \"address\"); // Fehler: Argument vom Typ '\"address\"' ist nicht zuweisbar zu Parameter vom Typ '\"name\" | \"age\"'.\n",
+        "locale": "de"
     }
 ]

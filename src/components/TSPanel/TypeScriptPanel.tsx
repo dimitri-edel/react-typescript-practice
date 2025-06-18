@@ -5,6 +5,7 @@ import styles from './TypeScriptPanel.module.css';
 interface TypeScriptPanelProps {
   scope: string;
   id: string;
+  feature?: string; // Optional feature prop for future use
 }
 
 // Simple TypeScript syntax highlighter using regex
@@ -52,9 +53,9 @@ function highlightTypeScript(code: string): string {
   return code;
 }
 
-export function TypeScriptPanel({ scope, id }: TypeScriptPanelProps) {
+export function TypeScriptPanel({ scope, id, feature }: TypeScriptPanelProps) {
   const { locale } = useLocale();
-  const code = getTranslation(scope, id, locale);
+  const code = getTranslation(scope, id, locale, undefined, feature);  
   return (
     <div className={styles.panelBg}>
       <pre className={styles.code}>
