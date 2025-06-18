@@ -1,10 +1,12 @@
 import { useLocale } from '../LocaleContext';
 import { getTranslation } from '../../i18n/i18n';
 import styles from './CSSPanel.module.css';
+import { useRef, useState } from 'react';
 
 interface CSSPanelProps {
   scope: string;
   id: string;
+  feature?: string;
 }
 
 // Simple CSS syntax highlighter using regex
@@ -30,11 +32,44 @@ function highlightCSS(code: string): string {
   return code;
 }
 
-export default function CSSPanel({ scope, id }: CSSPanelProps) {
+export default function CSSPanel({ scope, id, feature }: CSSPanelProps) {
   const { locale } = useLocale();
-  const code = getTranslation(scope, id, locale);
+  const code = getTranslation(scope, id, locale, undefined, feature);
+  const rawCode = code; // for clipboard (unhighlighted)
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(rawCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
   return (
-    <div className={styles.panelBg}>
+    <div className={styles.panelBg} style={{ position: 'relative' }} ref={panelRef}>
+      <button
+        onClick={handleCopy}
+        style={{ position: 'absolute', top: 8, right: 8, background: 'none', border: 'none', cursor: 'pointer', zIndex: 2 }}
+        title="Copy code"
+      >
+        <i className="fa-regular fa-copy" style={{ color: 'white', fontSize: '1.2em' }}></i>
+      </button>
+      {copied && (
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 40,
+          background: 'rgba(30,30,30,0.95)',
+          color: 'white',
+          padding: '4px 12px',
+          borderRadius: '6px',
+          fontSize: '0.95em',
+          zIndex: 3,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+        }}>
+          Copied!
+        </div>
+      )}
       <pre className={styles.code}>
         <code dangerouslySetInnerHTML={{ __html: highlightCSS(code) }} />
       </pre>
