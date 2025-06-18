@@ -1,14 +1,10 @@
 import TypeScriptSidebar from "../components/sidebar"
-import { getTranslation } from '../../../i18n/i18n';
-import { useLocale } from '../../../components/LocaleContext';
 import {TypeScriptPanel} from '../../../components/TSPanel/TypeScriptPanel';
 import {Index} from "./index";
-import { useEffect } from 'react';
 import { useState } from 'react';
 import Generics from './generics';
 
 export default function TypeScriptPage() {
-    const { locale } = useLocale();
     const [selected, setSelected] = useState<'index' | 'generics'>('index');
     
     let content;
