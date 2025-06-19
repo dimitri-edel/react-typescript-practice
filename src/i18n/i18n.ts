@@ -1,5 +1,6 @@
 import defaultTranslations from './translations.json';
 import typescriptTranslations from '../features/typescript/i18n/translations.json';
+import reactTranslations from '../features/react/i18n/translations.json';
 import type { ITranslation } from '../types/i18n';
 /*
     * This function retrieves a translation based on the provided scope, id, and locale.
@@ -21,6 +22,9 @@ export function getTranslation(scope: string, id: string, locale: string, paramL
         switch (feature) {
             case 'typescript':
                 translations = typescriptTranslations;
+                break;
+            case 'react':
+                translations = reactTranslations;
                 break;
             default:
                 translations = defaultTranslations;
