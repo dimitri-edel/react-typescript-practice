@@ -7,6 +7,7 @@ import Login from './components/pages/login';
 import Logout from './components/pages/logout';
 import I18nPage from './components/pages/i18nPage'
 import TypeScriptPage from './features/typescript/pages/main';
+import ReactPage from'./features/react/pages/main';
 
 function App() {  
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/i18n-page" element={<I18nPage />} />
         <Route path="/typescript-page" element={<TypeScriptPage />} />
+        <Route path="/react-page" element={<ReactPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

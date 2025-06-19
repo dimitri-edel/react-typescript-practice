@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Hooks from './hooks';
 
 
-export default function TypeScriptPage() {
+export default function ReactPage() {
     const [selected, setSelected] = useState<'index' | 'hooks'>('index');
     
     let content;
