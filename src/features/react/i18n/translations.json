@@ -1,0 +1,266 @@
+[
+  {
+    "scope": "react_hooks",
+    "id": "main_title",
+    "text": "Most Useful React Hooks (with TypeScript)",
+    "locale": "en"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "main_title",
+    "text": "Die nützlichsten React Hooks (mit TypeScript)",
+    "locale": "de"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "intro_paragraph",
+    "text": "React Hooks are functions that let you \"hook into\" React state and\nlifecycle features from function components. Introduced in React 16.8,\nthey empower you to write stateful logic in functional components,\nmaking your code more powerful, readable, and easier to manage.",
+    "locale": "en"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "intro_paragraph",
+    "text": "React Hooks sind Funktionen, die es Ihnen ermöglichen, aus\nFunktionskomponenten heraus auf React-Zustands- und\nLebenszyklus-Features \"zuzugreifen\". Sie wurden mit React 16.8\neingeführt und ermöglichen es Ihnen, zustandsbehaftete Logik in\nfunktionalen Komponenten zu schreiben, wodurch Ihr Code leistungsfähiger,\nlesbarer und einfacher zu verwalten wird.",
+    "locale": "de"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "section_heading_1",
+    "text": "Understanding Hooks with TypeScript Examples",
+    "locale": "en"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "section_heading_1",
+    "text": "Hooks verstehen mit TypeScript-Beispielen",
+    "locale": "de"
+  },
+  {
+    "scope": "useState",
+    "id": "title_useState",
+    "text": "`useState`",
+    "locale": "en"
+  },
+  {
+    "scope": "useState",
+    "id": "title_useState",
+    "text": "`useState`",
+    "locale": "de"
+  },
+  {
+    "scope": "useState",
+    "id": "description",
+    "text": "This hook lets you add **state** to functional components. It returns a\nstateful value and a function to update it. You can explicitly type the\nstate or let TypeScript infer it from the initial value.",
+    "locale": "en"
+  },
+  {
+    "scope": "useState",
+    "id": "description",
+    "text": "Dieser Hook ermöglicht es Ihnen, funktionalen Komponenten **Zustand**\nhinzuzufügen. Er gibt einen zustandsbehafteten Wert und eine Funktion zu\ndessen Aktualisierung zurück. Sie können den Zustand explizit typisieren\noder TypeScript ihn vom Initialwert ableiten lassen.",
+    "locale": "de"
+  },
+  {
+    "scope": "useState",
+    "id": "code_example",
+    "text": "import React, { useState } from 'react';\n\ninterface CounterProps {\n  initialCount?: number; // Optional prop for initial count\n}\n\nfunction Counter({ initialCount = 0 }: CounterProps) {\n  // Explicitly type the state as number\n  const [count, setCount] = useState<number>(initialCount);\n\n  return (\n    <div>\n      <p>You clicked {count} times</p>\n      <button onClick={() => setCount(prevCount => prevCount + 1)}>\n        Click me\n      </button>\n    </div>\n  );\n}\n",
+    "locale": "en"
+  },
+  {
+    "scope": "useState",
+    "id": "code_example",
+    "text": "import React, { useState } from 'react';\n\ninterface CounterProps {\n  initialCount?: number; // Optionale Prop für den Startwert\n}\n\nfunction Counter({ initialCount = 0 }: CounterProps) {\n  // Explizite Typisierung des Zustands als Zahl\n  const [count, setCount] = useState<number>(initialCount);\n\n  return (\n    <div>\n      <p>Sie haben {count} Mal geklickt</p>\n      <button onClick={() => setCount(prevCount => prevCount + 1)}>\n        Klicken Sie mich\n      </button>\n    </div>\n  );\n}\n",
+    "locale": "de"
+  },
+  {
+    "scope": "useEffect",
+    "id": "title_useEffect",
+    "text": "`useEffect`",
+    "locale": "en"
+  },
+  {
+    "scope": "useEffect",
+    "id": "title_useEffect",
+    "text": "`useEffect`",
+    "locale": "de"
+  },
+  {
+    "scope": "useEffect",
+    "id": "description",
+    "text": "The `useEffect` hook allows you to perform **side effects** in functional\ncomponents. These include data fetching, subscriptions, or manually\nchanging the DOM. It runs after every render by default, but you can\ncontrol when it runs using its dependency array.",
+    "locale": "en"
+  },
+  {
+    "scope": "useEffect",
+    "id": "description",
+    "text": "Der `useEffect` Hook ermöglicht es Ihnen, **Side-Effects** in\nfunktionalen Komponenten auszuführen. Dazu gehören Datenabruf,\nAbonnements oder manuelle DOM-Änderungen. Er wird standardmäßig nach\njedem Render ausgeführt, aber Sie können mit seinem Abhängigkeits-Array\nsteuern, wann er ausgeführt wird.",
+    "locale": "de"
+  },
+  {
+    "scope": "useEffect",
+    "id": "code_example",
+    "text": "import React, { useState, useEffect } from 'react';\n\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\ninterface UserProfileProps {\n  userId: number;\n}\n\nfunction UserProfile({ userId }: UserProfileProps) {\n  const [user, setUser] = useState<User | null>(null);\n  const [loading, setLoading] = useState<boolean>(true);\n\n  useEffect(() => {\n    // This effect runs whenever userId changes\n    setLoading(true);\n    fetch(`/api/users/${userId}`)\n      .then(response => response.json())\n      .then((data: User) => { // Cast fetched data to User type\n        setUser(data);\n        setLoading(false);\n      })\n      .catch(error => {\n        console.error(\"Failed to fetch user:\", error);\n        setUser(null);\n        setLoading(false);\n      });\n\n    return () => {\n      // Optional: Cleanup function runs before the next effect or unmount\n      console.log('Cleaning up old user data for:', userId);\n    };\n  }, [userId]); // Dependency array: Effect re-runs if userId changes\n\n  if (loading) return <p>Loading user...</p>;\n  if (!user) return <p>User not found.</p>;\n\n  return (\n    <div>\n      <p>User: {user.name}</p>\n      <p>Email: {user.email}</p>\n    </div>\n  );\n}\n",
+    "locale": "en"
+  },
+  {
+    "scope": "useEffect",
+    "id": "code_example",
+    "text": "import React, { useState, useEffect } from 'react';\n\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n}\n\ninterface UserProfileProps {\n  userId: number;\n}\n\nfunction UserProfile({ userId }: UserProfileProps) {\n  const [user, setUser] = useState<User | null>(null); // Zustand kann User\n  const [loading, setLoading] = useState<boolean>(true); // oder null sein\n\n  useEffect(() => {\n    // Dieser Effekt wird ausgeführt, wenn sich userId ändert\n    setLoading(true);\n    fetch(`/api/users/${userId}`)\n      .then(response => response.json())\n      .then((data: User) => { // Abgerufene Daten als Typ User casten\n        setUser(data);\n        setLoading(false);\n      })\n      .catch(error => {\n        console.error(\"Fehler beim Abrufen des Benutzers:\", error);\n        setUser(null);\n        setLoading(false);\n      });\n\n    return () => {\n      // Optional: Bereinigungsfunktion läuft vor dem nächsten Effekt/Unmount\n      console.log('Bereinige alte Benutzerdaten für:', userId);\n    };\n  }, [userId]); // Abhängigkeits-Array: Effekt wird erneut ausgeführt bei userId-Änderung\n\n  if (loading) return <p>Lade Benutzer...</p>;\n  if (!user) return <p>Benutzer nicht gefunden.</p>;\n\n  return (\n    <div>\n      <p>Benutzer: {user.name}</p>\n      <p>E-Mail: {user.email}</p>\n    </div>\n  );\n}\n",
+    "locale": "de"
+  },
+  {
+    "scope": "useContext",
+    "id": "title_useContext",
+    "text": "`useContext`",
+    "locale": "en"
+  },
+  {
+    "scope": "useContext",
+    "id": "title_useContext",
+    "text": "`useContext`",
+    "locale": "de"
+  },
+  {
+    "scope": "useContext",
+    "id": "description",
+    "text": "This hook lets you **subscribe to React context** without introducing\nnesting. Context provides a way to pass data through the component tree\nwithout having to pass props down manually at every level.",
+    "locale": "en"
+  },
+  {
+    "scope": "useContext",
+    "id": "description",
+    "text": "Dieser Hook ermöglicht es Ihnen, sich an einen **React-Kontext** zu\nabonnieren, ohne Verschachtelungen einzuführen. Kontext bietet eine\nMöglichkeit, Daten durch den Komponentenbaum zu leiten, ohne Props auf\njeder Ebene manuell weitergeben zu müssen.",
+    "locale": "de"
+  },
+  {
+    "scope": "useContext",
+    "id": "code_example",
+    "text": "import React, { useContext, createContext, ReactNode, useState } from 'react';\n\n// 1. Define the type for your context value\ntype Theme = 'light' | 'dark';\n\ninterface ThemeContextType {\n  theme: Theme;\n  toggleTheme: () => void;\n}\n\n// Create a Context with a default value that matches the type or null\nconst ThemeContext =\n  createContext<ThemeContextType | undefined>(undefined);\n\ninterface ThemeProviderProps {\n  children: ReactNode;\n}\n\n// 2. Create a Provider component\nfunction ThemeProvider({ children }: ThemeProviderProps) {\n  const [theme, setTheme] = useState<Theme>('light');\n\n  const toggleTheme = () => {\n    setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));\n  };\n\n  const contextValue: ThemeContextType = { theme, toggleTheme };\n\n  return (\n    <ThemeContext.Provider value={contextValue}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nfunction ThemedButton() {\n  // 3. Consume the Context\n  const context = useContext(ThemeContext);\n\n  if (!context) {\n    // This check is important for TypeScript if the context can be undefined\n    throw new Error('ThemedButton must be used within a ThemeProvider');\n  }\n\n  const { theme, toggleTheme } = context;\n\n  return (\n    <button\n      onClick={toggleTheme}\n      style={{\n        background: theme === 'dark' ? '#333' : '#eee',\n        color: theme === 'dark' ? '#eee' : '#333',\n        padding: '10px 20px',\n        border: 'none',\n        borderRadius: '5px',\n        cursor: 'pointer'\n      }}\n    >\n      Toggle {theme} theme\n    </button>\n  );\n}\n\nfunction App() {\n  return (\n    <ThemeProvider>\n      <ThemedButton />\n    </ThemeProvider>\n  );\n}\n",
+    "locale": "en"
+  },
+  {
+    "scope": "useContext",
+    "id": "code_example",
+    "text": "import React, { useContext, createContext, ReactNode, useState } from 'react';\n\n// 1. Definieren Sie den Typ für Ihren Kontextwert\ntype Theme = 'light' | 'dark';\n\ninterface ThemeContextType {\n  theme: Theme;\n  toggleTheme: () => void;\n}\n\n// Erstellen Sie einen Kontext mit einem Standardwert, der dem Typ entspricht\n// oder null ist\nconst ThemeContext =\n  createContext<ThemeContextType | undefined>(undefined);\n\ninterface ThemeProviderProps {\n  children: ReactNode;\n}\n\n// 2. Erstellen Sie eine Provider-Komponente\nfunction ThemeProvider({ children }: ThemeProviderProps) {\n  const [theme, setTheme] = useState<Theme>('light');\n\n  const toggleTheme = () => {\n    setTheme(currentTheme => (currentTheme === 'light' ? 'dark' : 'light'));\n  };\n\n  const contextValue: ThemeContextType = { theme, toggleTheme };\n\n  return (\n    <ThemeContext.Provider value={contextValue}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nfunction ThemedButton() {\n  // 3. Konsumieren Sie den Kontext\n  const context = useContext(ThemeContext);\n\n  if (!context) {\n    // Diese Überprüfung ist wichtig für TypeScript, wenn der Kontext\n    // undefiniert sein kann\n    throw new Error('ThemedButton muss innerhalb eines ThemeProvider\n      verwendet werden');\n  }\n\n  const { theme, toggleTheme } = context;\n\n  return (\n    <button\n      onClick={toggleTheme}\n      style={{\n        background: theme === 'dark' ? '#333' : '#eee',\n        color: theme === 'dark' ? '#eee' : '#333',\n        padding: '10px 20px',\n        border: 'none',\n        borderRadius: '5px',\n        cursor: 'pointer'\n      }}\n    >\n      Schalte {theme} Thema um\n    </button>\n  );\n}\n\nfunction App() {\n  return (\n    <ThemeProvider>\n      <ThemedButton />\n    </ThemeProvider>\n  );\n}\n",
+    "locale": "de"
+  },
+  {
+    "scope": "useRef",
+    "id": "title_useRef",
+    "text": "`useRef`",
+    "locale": "en"
+  },
+  {
+    "scope": "useRef",
+    "id": "title_useRef",
+    "text": "`useRef`",
+    "locale": "de"
+  },
+  {
+    "scope": "useRef",
+    "id": "description",
+    "text": "The `useRef` hook returns a **mutable ref object** whose `.current`\nproperty is initialized to the passed argument. The returned object will\npersist for the full lifetime of the component. It's commonly used to\naccess DOM elements directly or to store any mutable value that doesn't\ncause a re-render when updated.",
+    "locale": "en"
+  },
+  {
+    "scope": "useRef",
+    "id": "description",
+    "text": "Der `useRef` Hook gibt ein **veränderliches Ref-Objekt** zurück,\ndessen `.current`-Eigenschaft mit dem übergebenen Argument initialisiert\nwird. Das zurückgegebene Objekt bleibt während der gesamten Lebensdauer\nder Komponente bestehen. Er wird häufig verwendet, um direkt auf\nDOM-Elemente zuzugreifen oder um veränderliche Werte zu speichern, die\nkeine Neu-Renderung auslösen, wenn sie aktualisiert werden.",
+    "locale": "de"
+  },
+  {
+    "scope": "useRef",
+    "id": "code_example",
+    "text": "import React, { useRef } from 'react';\n\nfunction MyForm() {\n  // Specify the type of the DOM element the ref will attach to\n  const inputEl = useRef<HTMLInputElement>(null); // Initialized to null\n\n  const onButtonClick = () => {\n    // Check if .current exists before using it (TypeScript safety)\n    if (inputEl.current) {\n      inputEl.current.focus();\n    }\n  };\n\n  return (\n    <>\n      {/* Attach the ref to the input element */}\n      <input ref={inputEl} type=\"text\" placeholder=\"Focus me\" />\n      <button onClick={onButtonClick}>Focus the input</button>\n    </>\n  );\n}\n",
+    "locale": "en"
+  },
+  {
+    "scope": "useRef",
+    "id": "code_example",
+    "text": "import React, { useRef } from 'react';\n\nfunction MyForm() {\n  // Geben Sie den Typ des DOM-Elements an, an das das Ref angehängt wird\n  const inputEl = useRef<HTMLInputElement>(null); // Initialisiert auf null\n\n  const onButtonClick = () => {\n    // Überprüfen Sie, ob .current existiert, bevor Sie es verwenden\n    // (TypeScript-Sicherheit)\n    if (inputEl.current) {\n      inputEl.current.focus();\n    }\n  };\n\n  return (\n    <>\n      {/* Hängen Sie das Ref an das Input-Element */}\n      <input ref={inputEl} type=\"text\" placeholder=\"Fokus auf mich\" />\n      <button onClick={onButtonClick}>Fokus auf das Input-Feld</button>\n    </>\n  );\n}\n",
+    "locale": "de"
+  },
+  {
+    "scope": "useCallback",
+    "id": "title_useCallback",
+    "text": "`useCallback`",
+    "locale": "en"
+  },
+  {
+    "scope": "useCallback",
+    "id": "title_useCallback",
+    "text": "`useCallback`",
+    "locale": "de"
+  },
+  {
+    "scope": "useCallback",
+    "id": "description",
+    "text": "This hook returns a **memoized callback function**. It's useful for\noptimizing child components that rely on reference equality to prevent\nunnecessary re-renders. It only re-creates the function if one of its\ndependencies changes.",
+    "locale": "en"
+  },
+  {
+    "scope": "useCallback",
+    "id": "description",
+    "text": "Dieser Hook gibt eine **memoized Callback-Funktion** zurück. Er ist\nnützlich zur Optimierung von Kindkomponenten, die sich auf\nReferenzgleichheit verlassen, um unnötige Neu-Renderings zu verhindern.\nEr erstellt die Funktion nur neu, wenn sich eine ihrer Abhängigkeiten\nändert.",
+    "locale": "de"
+  },
+  {
+    "scope": "useCallback",
+    "id": "code_example",
+    "text": "import React, { useState, useCallback, memo } from 'react';\n\n// Define props type for the memoized child component\ninterface ButtonProps {\n  onClick: () => void;\n  children: React.ReactNode;\n}\n\n// Imagine This is a performance-sensitive child component\nconst MemoizedButton = memo(({ onClick, children }: ButtonProps) => {\n  console.log('Button rendered'); // This will log only when onClick or children\n  return <button onClick={onClick}>{children}</button>; // change\n});\n\nfunction ParentComponent() {\n  const [count, setCount] = useState<number>(0);\n  const [text, setText] = useState<string>('');\n\n  // The increment function will only be re-created if 'count' changes.\n  // Using a functional update (prevCount => prevCount + 1) means 'count'\n  // doesn't need to be a dependency.\n  const increment = useCallback(() => {\n    setCount(prevCount => prevCount + 1);\n  }, []); // Empty dependency array: function is created once\n\n  const handleChange = useCallback(\n    (e: React.ChangeEvent<HTMLInputElement>) => {\n      setText(e.target.value);\n    },\n    []\n  ); // Empty dependency array: function is created once\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <MemoizedButton onClick={increment}>Increment Count</MemoizedButton>\n      <input type=\"text\" value={text} onChange={handleChange}\n        placeholder=\"Type something...\" />\n      <p>Input: {text}</p>\n    </div>\n  );\n}\n",
+    "locale": "en"
+  },
+  {
+    "scope": "useCallback",
+    "id": "code_example",
+    "text": "import React, { useState, useCallback, memo } from 'react';\n\n// Definieren Sie den Prop-Typ für die memoized Kindkomponente\ninterface ButtonProps {\n  onClick: () => void;\n  children: React.ReactNode;\n}\n\n// Stellen Sie sich vor, dies ist eine performanzkritische Kindkomponente\nconst MemoizedButton = memo(({ onClick, children }: ButtonProps) => {\n  console.log('Button gerendert'); // Dies wird nur geloggt, wenn sich\n  return <button onClick={onClick}>{children}</button>; // onClick oder children ändern\n});\n\nfunction ParentComponent() {\n  const [count, setCount] = useState<number>(0);\n  const [text, setText] = useState<string>('');\n\n  // Die Increment-Funktion wird nur neu erstellt, wenn sich 'count' ändert.\n  // Die Verwendung eines funktionalen Updates (prevCount => prevCount + 1)\n  // bedeutet, dass 'count' keine Abhängigkeit sein muss.\n  const increment = useCallback(() => {\n    setCount(prevCount => prevCount + 1);\n  }, []); // Leeres Abhängigkeits-Array: Funktion wird einmal erstellt\n\n  const handleChange = useCallback(\n    (e: React.ChangeEvent<HTMLInputElement>) => {\n      setText(e.target.value);\n    },\n    []\n  ); // Leeres Abhängigkeits-Array: Funktion wird einmal erstellt\n\n  return (\n    <div>\n      <p>Zähler: {count}</p>\n      <MemoizedButton onClick={increment}>Zähler erhöhen</MemoizedButton>\n      <input type=\"text\" value={text} onChange={handleChange}\n        placeholder=\"Tippen Sie etwas...\" />\n      <p>Eingabe: {text}</p>\n    </div>\n  );\n}\n",
+    "locale": "de"
+  },
+  {
+    "scope": "useMemo",
+    "id": "title_useMemo",
+    "text": "`useMemo`",
+    "locale": "en"
+  },
+  {
+    "scope": "useMemo",
+    "id": "title_useMemo",
+    "text": "`useMemo`",
+    "locale": "de"
+  },
+  {
+    "scope": "useMemo",
+    "id": "description",
+    "text": "This hook returns a **memoized value**. It's useful for optimizing\nexpensive calculations that shouldn't be re-run on every render. It only\nre-calculates the value if one of its dependencies changes.",
+    "locale": "en"
+  },
+  {
+    "scope": "useMemo",
+    "id": "description",
+    "text": "Dieser Hook gibt einen **memoized Wert** zurück. Er ist nützlich zur\nOptimierung aufwendiger Berechnungen, die nicht bei jedem Render erneut\nausgeführt werden sollten. Er berechnet den Wert nur neu, wenn sich eine\nseiner Abhängigkeiten ändert.",
+    "locale": "de"
+  },
+  {
+    "scope": "useMemo",
+    "id": "code_example",
+    "text": "import React, { useState, useMemo } from 'react';\n\nfunction CalculationComponent() {\n  const [num1, setNum1] = useState<number>(10);\n  const [num2, setNum2] = useState<number>(5);\n  const [multiplier, setMultiplier] = useState<number>(100);\n\n  // This expensive calculation only runs if num1, num2, or multiplier\n  // changes\n  const expensiveResult: number = useMemo(() => {\n    console.log('Performing expensive calculation...');\n    // Ensure inputs are numbers before calculation\n    return num1 * num2 * multiplier;\n  }, [num1, num2, multiplier]); // Dependencies\n\n  return (\n    <div>\n      <label>\n        Number 1:\n        <input type=\"number\" value={num1}\n          onChange={e => setNum1(Number(e.target.value))} />\n      </label>\n      <br />\n      <label>\n        Number 2:\n        <input type=\"number\" value={num2}\n          onChange={e => setNum2(Number(e.target.value))} />\n      </label>\n      <br />\n      <label>\n        Multiplier:\n        <input type=\"number\" value={multiplier}\n          onChange={e => setMultiplier(Number(e.target.value))} />\n      </label>\n      <p>Expensive Result: {expensiveResult}</p>\n    </div>\n  );\n}\n",
+    "locale": "en"
+  },
+  {
+    "scope": "useMemo",
+    "id": "code_example",
+    "text": "import React, { useState, useMemo } from 'react';\n\nfunction CalculationComponent() {\n  const [num1, setNum1] = useState<number>(10);\n  const [num2, setNum2] = useState<number>(5);\n  const [multiplier, setMultiplier] = useState<number>(100);\n\n  // Diese aufwendige Berechnung wird nur ausgeführt, wenn sich num1, num2\n  // oder multiplier ändern\n  const expensiveResult: number = useMemo(() => {\n    console.log('Führe aufwendige Berechnung durch...');\n    // Sicherstellen, dass die Eingaben Zahlen sind, bevor gerechnet wird\n    return num1 * num2 * multiplier;\n  }, [num1, num2, multiplier]); // Abhängigkeiten\n\n  return (\n    <div>\n      <label>\n        Zahl 1:\n        <input type=\"number\" value={num1}\n          onChange={e => setNum1(Number(e.target.value))} />\n      </label>\n      <br />\n      <label>\n        Zahl 2:\n        <input type=\"number\" value={num2}\n          onChange={e => setNum2(Number(e.target.value))} />\n      </label>\n      <br />\n      <label>\n        Multiplikator:\n        <input type=\"number\" value={multiplier}\n          onChange={e => setMultiplier(Number(e.target.value))} />\n      </label>\n      <p>Aufwendiges Ergebnis: {expensiveResult}</p>\n    </div>\n  );\n}\n",
+    "locale": "de"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "conclusion_paragraph",
+    "text": "These React Hooks, when combined with TypeScript, allow for the\ndevelopment of highly robust, efficient, and type-safe functional\ncomponents. By understanding and utilizing them correctly, you can\nsignificantly improve the quality and maintainability of your React\napplications.",
+    "locale": "en"
+  },
+  {
+    "scope": "react_hooks",
+    "id": "conclusion_paragraph",
+    "text": "Diese React Hooks, in Kombination mit TypeScript, ermöglichen die\nEntwicklung hochrobuster, effizienter und typsicherer funktionaler\nKomponenten. Durch deren korrektes Verständnis und Einsatz können Sie die\nQualität und Wartbarkeit Ihrer React-Anwendungen erheblich verbessern.",
+    "locale": "de"
+  }
+]
